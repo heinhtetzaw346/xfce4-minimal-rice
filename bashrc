@@ -131,22 +131,35 @@ export Programming=/media/fureasu/DATA/Programming
 export OSImages=/media/fureasu/DATA/OSImages 
 export MMR=/media/fureasu/DATA/MMR 
 
+#prompt decoration section
+#colors
+C0="\[\e[0m\]"    #colorless(white)
+C1="\[\e[1;31m\]" #red
+C2="\[\e[1;32m\]" #green
+C3="\[\e[1;33m\]" #yellow
+C4="\[\e[1;34m\]" #blue
+C5="\[\e[1;35m\]" #violet
+C6="\[\e[1;36m\]" #cyan
+C7="\[\e[1;37m\]" #gray
+
+
 #short pwd
 short_pwd() { pwd | sed -e "s|$HOME|~|" -e 's|\(/.\)[^/]*/|\1/|g'; }
 #kubectl context
 kubectl_context() { grep current-context ~/.kube/config | awk -F ' ' '{ print $2 }'; }
 
-#terminal prompt
-export PS1='[\[\e[1;35m\]\u@\h:\[\e[1;36m\]$(short_pwd)\[\e[0m\]]\[\e[1;33m\]\[\e[1;31m\]$(__git_ps1)\[\e[0m\]\n\$ '
+#default prompt
+export PS1="[$C5\u@\h:$C6\$(short_pwd)$C0]$C3$C1\$(__git_ps1)$C0\n\$ "
+export PS2="-> "
 
-#terminal prompt with kubectl context
+#prompt with kubectl context
 show-kctx() {
-    export PS1='\[\e[1;33m\]($(kubectl_context)) \[\e[0m\][\[\e[1;35m\]\u@\h:\[\e[1;36m\]$(short_pwd)\[\e[0m\]]\[\e[1;31m\]$(__git_ps1)\[\e[0m\]\n\$ '
+    export PS1="$C3(\$(kubectl_context)) $C0[$C5\u@\h:$C6\$(short_pwd)$C0]$C1\$(__git_ps1)$C0\n\$ "
 }
 
-#terminal prompt without kubectl context
+#prompt without kubectl context
 hide-kctx() {
-    export PS1='[\[\e[1;35m\]\u@\h:\[\e[1;36m\]$(short_pwd)\[\e[0m\]]\[\e[1;33m\]\[\e[1;31m\]$(__git_ps1)\[\e[0m\]\n\$ '
+    export PS1="[$C5\u@\h:$C6\$(short_pwd)$C0]$C3$C1\$(__git_ps1)$C0\n\$ "
 }
 
 #required system variables#
