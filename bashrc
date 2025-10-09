@@ -131,10 +131,14 @@ export Programming=/media/fureasu/DATA/Programming
 export OSImages=/media/fureasu/DATA/OSImages 
 export MMR=/media/fureasu/DATA/MMR 
 
-
+#short pwd
 short_pwd() { pwd | sed -e "s|$HOME|~|" -e 's|\(/.\)[^/]*/|\1/|g'; }
+#kubectl context
+kubectl_context() {
+    cat ~/.kube/config | grep current-context | awk -F ' ' '{ print $2 }'; 
+}
 #terminal prompt
-PS1='[\[\e[1;35m\]\u@\h:\[\e[1;36m\]$(short_pwd)\[\e[0m\]]\[\e[1;31m\]$(__git_ps1)\[\e[0m\]\n\$ '
+PS1='[\[\e[1;35m\]\u@\h:\[\e[1;36m\]$(short_pwd)\[\e[0m\]] \[\e[1;33m\]($(kubectl_context))\[\e[1;31m\]$(__git_ps1)\[\e[0m\]\n\$ '
 
 #required system variables#
 export GTK_THEME=WhiteSur-Dark
