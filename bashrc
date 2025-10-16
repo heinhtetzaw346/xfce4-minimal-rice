@@ -142,6 +142,8 @@ C5="\[\e[1;35m\]" #violet
 C6="\[\e[1;36m\]" #cyan
 C7="\[\e[1;37m\]" #gray
 
+#kubectl use context
+kcu() { source $HOME/.local/bin/kcu-v2.sh; show-kctx; }
 
 #short pwd
 short_pwd() { pwd | sed -e "s|$HOME|~|" -e 's|\(/.\)[^/]*/|\1/|g'; }
