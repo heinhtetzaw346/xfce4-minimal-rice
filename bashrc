@@ -156,7 +156,7 @@ export PS2="-> "
 
 #prompt with kubectl context
 show-kctx() {
-    export PS1="$C3(\$(kubectl_context)) $C0[$C5\u@\h:$C6\$(short_pwd)$C0]$C1\$(__git_ps1)$C0\n\$ "
+    export PS1="$C0($C3\$(kubectl_context)$C0) $C0[$C5\u@\h:$C6\$(short_pwd)$C0]$C1\$(__git_ps1)$C0\n\$ "
 }
 
 #prompt without kubectl context
