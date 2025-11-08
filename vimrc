@@ -53,10 +53,10 @@ let g:indentLine_color_gui = "#66576b"
 
 " Set theme
 set background=dark
-"colorscheme moonfly
-colorscheme catppuccin-mocha
-"let g:lightline = { 'colorscheme': 'moonfly' }
-let g:lightline = { 'colorscheme': 'catppuccin_mocha' }
+colorscheme moonfly
+"colorscheme catppuccin-mocha
+let g:lightline = { 'colorscheme': 'moonfly' }
+"let g:lightline = { 'colorscheme': 'catppuccin_mocha' }
 
 " Set transparency AFTER colorscheme
 hi Normal guibg=NONE ctermbg=NONE
@@ -80,8 +80,10 @@ command! -bang -nargs=* Files
 " File Type detection
 autocmd BufRead,BufNewFile *.tf,*.tfvars set filetype=terraform
 
-" coc shortcuts
+" coc extensions
+let g:coc_global_extensions = ['coc-json', 'coc-yaml', 'coc-sql', 'coc-pyright', 'coc-clangd', 'coc-snippets']
 
+" coc shortcuts
 " Use <C-space> to trigger completion
 inoremap <silent><expr> <C-Space> coc#refresh()
 
