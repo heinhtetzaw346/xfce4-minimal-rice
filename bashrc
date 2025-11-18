@@ -142,26 +142,31 @@ C5="\[\e[1;35m\]" #violet
 C6="\[\e[1;36m\]" #cyan
 C7="\[\e[1;37m\]" #gray
 
-#kubectl use context
-kcu() { source $HOME/.local/bin/kcu-v2.sh; show-kctx; }
-
 #short pwd
 short_pwd() { pwd | sed -e "s|$HOME|~|" -e 's|\(/.\)[^/]*/|\1/|g'; }
 #kubectl context
-kubectl_context() { grep current-context ~/.kube/config | awk -F ' ' '{ print $2 }'; }
+kubectl_context() { 
+    output=$(kubectl config get-contexts | grep '*' | awk -F ' ' '{ print $2 }')
+    if [ "$output" = "" ]; then
+        output="none"
+    fi
+    output="⚓ $output"
+    echo "$output"
+}
 
+default_prompt="$C0[$C5🐧 \u@\h:$C6\$(short_pwd)$C0]$C3$C1\$(__git_ps1)$C0\n\$ "
 #default prompt
-export PS1="[$C5\u@\h:$C6\$(short_pwd)$C0]$C3$C1\$(__git_ps1)$C0\n\$ "
+export PS1="$default_prompt"
 export PS2="-> "
 
 #prompt with kubectl context
 show-kctx() {
-    export PS1="$C3(\$(kubectl_context)) $C0[$C5\u@\h:$C6\$(short_pwd)$C0]$C1\$(__git_ps1)$C0\n\$ "
+    export PS1="$C3(\$(kubectl_context)) $default_prompt"
 }
 
 #prompt without kubectl context
 hide-kctx() {
-    export PS1="[$C5\u@\h:$C6\$(short_pwd)$C0]$C3$C1\$(__git_ps1)$C0\n\$ "
+    export PS1="$default_prompt"
 }
 
 #required system variables#
