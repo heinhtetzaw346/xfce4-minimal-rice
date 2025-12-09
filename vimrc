@@ -18,7 +18,6 @@ Plug 'jiangmiao/auto-pairs'
 
 " lsp
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sheerun/vim-polyglot'
 
 " csharp syntax and indent
 Plug 'oranget/vim-csharp'
@@ -48,7 +47,6 @@ set number
 set relativenumber
 set clipboard=unnamedplus
 
-let g:indentLine_setExpand = 0
 let g:indentLine_color_gui = "#66576b"
 
 " Set theme
@@ -126,3 +124,15 @@ nmap <F9> :call vimspector#ToggleBreakpoint()<CR>
 nmap <F10> :call vimspector#StepOver()<CR>
 nmap <F11> :call vimspector#StepInto()<CR>
 nmap <F12> :call vimspector#Reset()<CR>
+
+" Indentation for tabs
+set noexpandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+
+" Show first indentLine
+let g:indentLine_showFirstIndentLevel = 1
+
+set list lcs=tab:\|\ 
+highlight SpecialKey guifg=#555555 ctermfg=240 gui=nocombine
