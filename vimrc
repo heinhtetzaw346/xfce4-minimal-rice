@@ -18,6 +18,7 @@ Plug 'jiangmiao/auto-pairs'
 
 " lsp
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sheerun/vim-polyglot'
 
 " csharp syntax and indent
 Plug 'oranget/vim-csharp'
