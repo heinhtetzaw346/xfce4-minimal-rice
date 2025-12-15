@@ -1,30 +1,29 @@
 #!/bin/bash
-# lock.sh
+# lock.sh 
 
-# Screenshot current desktop
-scrot /tmp/screen.png
-
-# Blur it
+# Screenshot & blur (using maim for multi-monitor support)
+maim /tmp/screen.png
 convert /tmp/screen.png -blur 0x6 /tmp/screen_blur.png
 
-# Run i3lock-color
+# Lock screen with i3lock-color
 i3lock \
   -i /tmp/screen_blur.png \
   --inside-color=00000088 \
-  --ring-color=88c0d0 \
+  --ring-color=9ecbff \
+  --verif-color=5dade2ff \
+  --wrong-color=e74c3cff \
   --line-color=00000000 \
-  --keyhl-color=81a1c1 \
-  --bshl-color=bf616a \
+  --keyhl-color=31439e \
+  --bshl-color=e74c3cff \
   --separator-color=00000000 \
-  --time-color=eceff4 \
-  --date-color=eceff4 \
-  --layout-color=eceff4 \
+  --time-color=ffffffff \
+  --date-color=ffffffff \
+  --layout-color=ffffffff \
   --clock --date-str="%A, %d %B" \
-  --time-str="%H:%M:%S" \
+  --time-str="%H:%M" \
   --indicator \
-  --radius=130 \
+  --radius=100 \
   --ring-width=8
 
 # Clean up
-rm /tmp/screen*.png
-
+rm -f /tmp/screen*.png
