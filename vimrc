@@ -30,6 +30,7 @@ Plug 'puremourning/vimspector'
 Plug 'morhetz/gruvbox'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'bluz71/vim-moonfly-colors', { 'as': 'moonfly' }
+Plug 'fxn/vim-monochrome'
 
 " status line 
 Plug 'itchyny/lightline.vim'
@@ -52,10 +53,13 @@ let g:indentLine_color_gui = "#66576b"
 
 " Set theme
 set background=dark
-colorscheme moonfly
+colorscheme monochrome
+"colorscheme moonfly
 "colorscheme catppuccin-mocha
-let g:lightline = { 'colorscheme': 'moonfly' }
+"let g:lightline = { 'colorscheme': 'moonfly' }
+let g:lightline = { 'colorscheme': 'nord' }
 "let g:lightline = { 'colorscheme': 'catppuccin_mocha' }
+
 
 " Set transparency AFTER colorscheme
 hi Normal guibg=NONE ctermbg=NONE
@@ -77,10 +81,10 @@ command! -bang -nargs=* Files
 
 
 " File Type detection
-autocmd BufRead,BufNewFile *.tf,*.tfvars set filetype=terraform
+autocmd BufRead,BufNewFile *.tf set filetype=terraform
 
 " coc extensions
-let g:coc_global_extensions = ['coc-json', 'coc-yaml', 'coc-sql', 'coc-pyright', 'coc-clangd', 'coc-snippets']
+let g:coc_global_extensions = ['coc-json', 'coc-yaml', 'coc-sql', 'coc-pyright', 'coc-clangd', 'coc-snippets', 'coc-java', 'coc-go']
 
 " coc shortcuts
 " Use <C-space> to trigger completion
@@ -127,10 +131,10 @@ nmap <F11> :call vimspector#StepInto()<CR>
 nmap <F12> :call vimspector#Reset()<CR>
 
 " Indentation for tabs
-set noexpandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+"set noexpandtab
+"set tabstop=4
+"set shiftwidth=4
+"set softtabstop=4
 
 " Show first indentLine
 let g:indentLine_showFirstIndentLevel = 1

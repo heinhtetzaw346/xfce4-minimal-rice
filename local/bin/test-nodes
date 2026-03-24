@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+declare -a nodes=("test-alma-1" "test-alpine-1" "test-ubuntu-1" "test-debian-1")
+
+if [ "$@" ]; then 
+  action="$1"
+else
+  read -p "What's your action?[start|shutdown|dominfo]: " action;
+fi
+
+echo "Performing $action on target nodes"
+for node in "${nodes[@]}"; do
+  virsh $action $node
+done
+echo "All DONE!"

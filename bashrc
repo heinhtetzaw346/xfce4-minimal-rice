@@ -1,6 +1,3 @@
-#dependency variables
-export VAULT_ADDR="http://172.20.204.44:8200"
-
 #shortcut variables
 export VM=/media/fureasu/DATA/VirtualMachines
 export docker=/media/fureasu/DATA/DevOps/YamlObjects/docker
@@ -8,10 +5,12 @@ export k8s=/media/fureasu/DATA/DevOps/YamlObjects/kubernetes
 export Download=/media/fureasu/DATA/Download
 export DevOps=/media/fureasu/DATA/DevOps
 export DATA=/media/fureasu/DATA
+export iac=$DevOps/iac
 export Media=/media/fureasu/DATA/Media
 export Programming=/media/fureasu/DATA/Programming
 export OSImages=/media/fureasu/DATA/OSImages 
 export MMR=/media/fureasu/DATA/MMR 
+export sshu=/media/fureasu/DATA/DevOps/sshu
 
 #prompt decoration section
 #colors
@@ -32,18 +31,18 @@ kubectl_context() {
     if [ "$output" = "" ]; then
         output="none"
     fi
-    output="⚓ $output"
+    output="⚓$output"
     echo "$output"
 }
 
-default_prompt="$C0[$C5🐧 \u@\h:$C6\$(short_pwd)$C0]$C3$C1\$(__git_ps1)$C0\n\$ "
+default_prompt="$C0[$C5🐧\u@\h:$C6\$(short_pwd)$C0]$C3$C1\$(__git_ps1)$C0\n\$ "
 #default prompt
 export PS1="$default_prompt"
 export PS2="-> "
 
 #prompt with kubectl context
 show-kctx() {
-    export PS1="$C3(\$(kubectl_context)) $default_prompt"
+    export PS1="$C4(\$(kubectl_context)) $default_prompt"
 }
 
 #prompt without kubectl context
@@ -52,10 +51,12 @@ hide-kctx() {
 }
 
 #required system variables#
-export GTK_THEME=Catppuccin-Dark
+export GTK_THEME=WhiteSur-Dark
 export BAT_THEME=ansi
-export PATH=/home/fureasu/.scripts:/media/fureasu/DATA/Programs/Godot:/home/fureasu/.vsdbg:$PATH
+export PATH=/home/fureasu/.scripts:/media/fureasu/DATA/Programs/Godot:/home/fureasu/.vsdbg:/usr/local/go/bin:/opt/flutter/bin:/home/fureasu/.pulumi/bin:$PATH
 export MANPAGER="vim +MANPAGER --not-a-term -"
+export GOPATH="$DATA/gopath"
+export GOCACHE="$DATA/.cache/go-build"
 
 #alias#
 alias godot='Godot_v4.4.1-stable_linux.x86_64'
@@ -67,4 +68,10 @@ alias ssh='TERM=xterm-256color ssh'
 source <(kubectl completion bash)
 complete -o default -F __start_kubectl k
 
-complete -C /usr/local/bin/terraform terraform
+# proxy
+#export http_proxy="http://192.168.100.13:8080"
+#export https_proxy="http://192.168.100.13:8080"
+#export no_proxy="localhost,127.0.0.1,*.lab.local,*.k8s.local"
+
+#kubectl use context
+kuc() { source /home/fureasu/.local/bin/kuc.sh "$@"; show-kctx; }
