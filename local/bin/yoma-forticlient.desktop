@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=YomaBank Forticlient VPN
+Comment=Fortinet SSL VPN to YomaBank
+Exec=/home/fureasu/.local/bin/fortinet-vpn.sh
+Icon=/media/fureasu/DATA/Media/Logos/YomabankForticlientLogo.png
+Terminal=false
+Categories=Network;
+StartupNotify=false
