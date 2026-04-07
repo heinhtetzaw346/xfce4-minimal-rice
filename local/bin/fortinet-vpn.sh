@@ -30,6 +30,7 @@ if [ -f "$VPN_PID_FILE" ] && ps -p $(cat "$VPN_PID_FILE") > /dev/null 2>&1; then
     fi
     
     echo "VPN Disconnected and UI cleaned up."
+    notify-send -i "$VPN_ICON" -t 4000 "VPN Disconnected" "Tunnel to $VPN_GATEWAY disconnected"
     exit 0
 fi
 
@@ -47,6 +48,7 @@ if [ -n "$COOKIE" ]; then
         --background \
         "$VPN_GATEWAY"
 
+    notify-send -i "$VPN_ICON" -t 4000 "VPN Connected" "Tunnel established to $VPN_GATEWAY"
     # Create the tray icon
     # Clicking the icon runs this script again ($0), triggering the Disconnect logic above
     yad --notification \
@@ -59,5 +61,6 @@ if [ -n "$COOKIE" ]; then
     echo "VPN Tunnel established. To $VPN_GATEWAY"
 else
     echo "Login failed or cancelled."
+    notify-send -u critical -i "dialog-error" "VPN Login Failed" "No authentication cookie received."
     exit 1
 fi
