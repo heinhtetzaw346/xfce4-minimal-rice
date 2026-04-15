@@ -145,3 +145,6 @@ nnoremap bp :bprevious<CR>
 
 " discard all changes
 nnoremap <leader>d :e!<CR>
+
+" open terminal shortcut
+nnoremap <leader>t :botright terminal ++rows=10<CR>
