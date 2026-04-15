@@ -23,9 +23,6 @@ Plug 'sheerun/vim-polyglot'
 " csharp syntax and indent
 Plug 'oranget/vim-csharp'
 
-" debug (DAP)
-Plug 'puremourning/vimspector'
-
 " color schemes
 Plug 'morhetz/gruvbox'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
@@ -107,9 +104,6 @@ inoremap <expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0, 3) : "\<Left>
 " Rename symbol
 nnoremap <leader>rn <Plug>(coc-rename)
 
-" Format buffer
-nnoremap <leader>f :call CocAction('format')<CR>
-
 " Code actions
 nnoremap <leader>ca <Plug>(coc-codeaction)
 
@@ -124,11 +118,11 @@ inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<CR>"
 
 " vimspector shortcuts
-nmap <F5> :call vimspector#Launch()<CR>
-nmap <F9> :call vimspector#ToggleBreakpoint()<CR>
-nmap <F10> :call vimspector#StepOver()<CR>
-nmap <F11> :call vimspector#StepInto()<CR>
-nmap <F12> :call vimspector#Reset()<CR>
+"nmap <F5> :call vimspector#Launch()<CR>
+"nmap <F9> :call vimspector#ToggleBreakpoint()<CR>
+"nmap <F10> :call vimspector#StepOver()<CR>
+"nmap <F11> :call vimspector#StepInto()<CR>
+"nmap <F12> :call vimspector#Reset()<CR>
 
 " Indentation for tabs
 "set noexpandtab
@@ -139,5 +133,15 @@ nmap <F12> :call vimspector#Reset()<CR>
 " Show first indentLine
 let g:indentLine_showFirstIndentLevel = 1
 
-set list lcs=tab:\|\ 
-highlight SpecialKey guifg=#555555 ctermfg=240 gui=nocombine
+" Map fzf file search to \f
+nnoremap <leader>f :Files<CR>
+
+" non save buffer navigation
+set hidden
+
+" buffer workflow shortcuts
+nnoremap bn :bnext<CR>
+nnoremap bp :bprevious<CR>
+
+" discard all changes
+nnoremap <leader>d :e!<CR>
