@@ -19,3 +19,15 @@
 1. After every major tasks, please log the progress in .agent-files/log/file-name.md files. 
 2. Name the log files with procedural numbers-topic/task name. example 01-review-project.md
 3. If temporary scripts are used, please record the overview of the steps taken by those scripts in the log file.
+
+# Kubeconfig & Context Policy
+
+1. **Never Touch `.kube/config.d`:** NEVER read, inspect, list, edit, or touch the `.kube/config.d` directory under any circumstances. Do not even look at it.
+2. **Prioritize MCP:** Always perform Kubernetes operations through the connected MCP tools.
+3. **Explicit Context Switching:** If terminal operations are needed for a specific cluster/context, ask the user to switch into that specific context instead of referencing or switching kubeconfigs manually.
+
+# Git Configuration Policy
+
+1. **Preserve User Identity:** If a task or test requires changing Git user credentials (`user.name` or `user.email`), agents must record the original values before making any modifications.
+2. **Prefer Local or Ephemeral Configs:** Avoid modifying global Git configuration (`--global`). Prefer repository-local configs (`git config user.name ...`), command-line overrides (`git -c user.name="..." -c user.email="..." commit ...`), or environment variables (`GIT_AUTHOR_NAME`, `GIT_COMMITTER_NAME`, etc.) whenever possible.
+3. **Mandatory Restoration:** If Git user configurations (`user.name` or `user.email`) are altered for testing or automated tasks, agents must ALWAYS restore them to their original values immediately upon completion of the task.
