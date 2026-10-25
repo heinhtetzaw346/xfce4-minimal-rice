@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ovpnx
+Comment=Connect or disconnect OpenVPN3
+Exec=/home/fureasu/.local/bin/ovpnx
+Icon=openvpn
+Terminal=false
+Categories=Network;
+StartupNotify=false
