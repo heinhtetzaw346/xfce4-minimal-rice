@@ -41,6 +41,9 @@ Plug 'jlcrochet/vim-razor'
 " markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 
+" search and replace preview
+Plug 'markonm/traces.vim'
+
 call plug#end()
 
 filetype plugin on
