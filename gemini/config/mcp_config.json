@@ -10,10 +10,21 @@
     "k8s-lab": {
       "command": "npx",
       "args": [
-        "kubernetes-mcp-server@latest"
+        "kubernetes-mcp-server@0.0.69"
       ],
       "env": {
         "KUBECONFIG": "/home/fureasu/.kube/config"
+      }
+    },
+    "k8s-prod": {
+      "command": "npx",
+      "args":[
+        "kubernetes-mcp-server@0.0.69",
+        "--config",
+        "/home/fureasu/.config/k8s-mcp/read-only.toml"
+      ],
+      "env": {
+        "KUBECONFIG": "/home/fureasu/.kube/config.d/k8s-local.yaml"
       }
     },
     "Canva": {
