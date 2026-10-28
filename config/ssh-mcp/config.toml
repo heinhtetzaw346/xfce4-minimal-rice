@@ -1,0 +1,13 @@
+[defaults]
+defaultProfile = "lab"
+approvalMode = "ask-destructive"
+
+[[profiles]]
+name = "lab"
+host = "192.168.224.108"
+port = 22
+user = "mcp-agent"           
+auth = "key"
+keyRef = "~/.ssh/id_ed25519"
+role = "admin"
+approvalPolicy = "auto"

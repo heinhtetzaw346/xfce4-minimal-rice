@@ -27,6 +27,13 @@
         "KUBECONFIG": "/home/fureasu/.kube/config.d/k8s-local.yaml"
       }
     },
+    "ssh-mcp": {
+      "command": "npx",
+      "args": [
+        "ssh-mcp@2.22.0",
+        "--config=/home/fureasu/.config/ssh-mcp/config.toml"
+      ]
+    },
     "Canva": {
       "command": "npx",
       "args": [
