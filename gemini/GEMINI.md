@@ -22,9 +22,10 @@
 
 # Kubeconfig & Context Policy
 
-1. **Never Touch `.kube/config.d`:** NEVER read, inspect, list, edit, or touch the `.kube/config.d` directory under any circumstances. Do not even look at it.
+1. **Never Touch `.kube/config.d` or Kubeconfig Files:** NEVER read, inspect, list, edit, parse, or touch `~/.kube/config`, the `.kube/config.d` directory, or any other kubeconfig files under any circumstances. Do not read raw configuration files containing tokens, certificates, or cluster credentials.
 2. **Prioritize MCP:** Always perform Kubernetes operations through the connected MCP tools.
-3. **Explicit Context Switching:** If terminal operations are needed for a specific cluster/context, ask the user to switch into that specific context instead of referencing or switching kubeconfigs manually.
+3. **No Direct Terminal Fallback Without Notification & Permission:** If an operation cannot be achieved via MCP tools (e.g., resource creation/modification on a read-only MCP server), notify the user about the limitation and obtain explicit permission before executing direct terminal commands.
+4. **Explicit Context Switching:** If terminal operations are needed for a specific cluster/context, ask the user to switch into that specific context instead of referencing, switching, or overriding `KUBECONFIG` manually.
 
 # Git Configuration Policy
 
