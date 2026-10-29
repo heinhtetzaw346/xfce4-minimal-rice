@@ -20,14 +20,14 @@
 2. Name the log files with procedural numbers-topic/task name. example 01-review-project.md
 3. If temporary scripts are used, please record the overview of the steps taken by those scripts in the log file.
 
-# Kubeconfig & Context Policy
+# Kubeconfig & Context Rule
 
 1. **Never Touch `.kube/config.d` or Kubeconfig Files:** NEVER read, inspect, list, edit, parse, or touch `~/.kube/config`, the `.kube/config.d` directory, or any other kubeconfig files under any circumstances. Do not read raw configuration files containing tokens, certificates, or cluster credentials.
 2. **Prioritize MCP:** Always perform Kubernetes operations through the connected MCP tools.
 3. **No Direct Terminal Fallback Without Notification & Permission:** If an operation cannot be achieved via MCP tools (e.g., resource creation/modification on a read-only MCP server), notify the user about the limitation and obtain explicit permission before executing direct terminal commands.
 4. **Explicit Context Switching:** If terminal operations are needed for a specific cluster/context, ask the user to switch into that specific context instead of referencing, switching, or overriding `KUBECONFIG` manually.
 
-# Git Configuration Policy
+# Git Configuration Rule
 
 1. **Preserve User Identity:** If a task or test requires changing Git user credentials (`user.name` or `user.email`), agents must record the original values before making any modifications.
 2. **Prefer Local or Ephemeral Configs:** Avoid modifying global Git configuration (`--global`). Prefer repository-local configs (`git config user.name ...`), command-line overrides (`git -c user.name="..." -c user.email="..." commit ...`), or environment variables (`GIT_AUTHOR_NAME`, `GIT_COMMITTER_NAME`, etc.) whenever possible.
